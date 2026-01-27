@@ -11,6 +11,7 @@
 				position: absolute;
 				right: 7px;
 				top: 10px;
+				z-index: 1000;
 			}
 			
 			#menu{
@@ -40,22 +41,24 @@
 				position: absolute;
 				left: 10px;
 				top: 200px;
-				background: url('map.png');
+				background: url('images/map.png');
 				background-size: contain;
 				width: 36px;
 				height: 36px;
 				cursor: pointer;
+				z-index: 1000;
 			}
 			
 			#sat_view {
 				position: absolute;
 				left: 10px;
 				top: 245px;
-				background: url('sat.png');
+				background: url('images/sat.png');
 				background-size: contain;
 				width: 36px;
 				height: 36px;
 				cursor: pointer;
+				z-index: 1000;
 			}
 			
 			#map_view, #sat_view {
@@ -71,4 +74,5 @@
 				width: 36px;
 				height: 36px;
 				line-height: 36px;
+
 			}
