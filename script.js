@@ -103,7 +103,11 @@ var pozycja = L.control.coordinates({position:"bottomright"}).addTo(map);
 var skala = L.control.scale({imperial: false}).addTo(map);
 
 //dodanie wyszukiwarki miejscowosci
-var osmGeocoder = new L.Control.OSMGeocoder({text: 'Szukaj', position:"topleft"}).addTo(map);
+L.Control.geocoder({
+  defaultMarkGeocode: true,
+  placeholder: 'Szukaj miejscowości...',
+  position: 'topleft'
+}).addTo(map);
 
 //####FUNKCJA GEOLOKALIZACJI ###############
 var geolokalizacja = L.control.locate({
@@ -146,4 +150,5 @@ $("#map_view").click(function() {
 		osm.bringToBack();
 	}
 });		
+
 
