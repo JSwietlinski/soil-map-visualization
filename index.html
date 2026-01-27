@@ -15,7 +15,7 @@
 		<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		
-		<!--do sekcji head dodaÊ bibliotekÍ dla odczytu pozycji myszki-->
+		<!--do sekcji head dodal biblioteke dla odczytu pozycji myszki-->
 		<link rel='stylesheet prefetch' href='https://mrmufflon.github.io/Leaflet.Coordinates/dist/Leaflet.Coordinates-0.1.3.css'>
 		<script src='https://mrmufflon.github.io/Leaflet.Coordinates/dist/Leaflet.Coordinates-0.1.3.min.js'></script>
 		
@@ -38,68 +38,64 @@
 		
 		<!--warstwa panelu-->
 		<div id="panel">
-			<!--warstwa nag≥Ûwka menu-->
+			<!--warstwa naglowka menu-->
 			<div id="menu"><font size="4"><b>Legenda</b></font></div>
-			<!--warstwa zawartoúci menu-->
+			<!--warstwa zawartosci menu-->
 			<div id="menu_res">
 					<div id="typ"><label><b>Typologia gleb:</b></label></div>
 					
 					<div id="D"><label><input type="checkbox" value="D">
 					<img
-					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
-					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:D" align="center"><font size="2">- czarne ziemie typowe</font></label></div>
+					src="images/D.png" align="center"><font size="2">- czarne ziemie typowe</font></label></div>
 					
 					<div id="Dz"><label><input type="checkbox" value="Dz">
 					<img
-					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
-					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:Dz" align="center"><font size="2">- czarne ziemie z poziomem cambic</font></label></div>
+					src="images/Dz.png" align="center"><font size="2">- czarne ziemie z poziomem cambic</font></label></div>
 					
 					<div id="G1k"><label><input type="checkbox" value="G1k">
 					<img
-					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
-					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:G1k" align="center"><font size="2">- gruntowo-glejowe</font></label></div>
+					src="images/G1k.png" align="center"><font size="2">- gruntowo-glejowe</font></label></div>
 					
 					<div id="Pg1"><label><input type="checkbox" value="Pg1">
 					<img
-					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
-					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:Pg1" align="center"><font size="2">- p≥owe gruntowo-glejowe</font></label></div>
+					src="images/Pg1.png" align="center"><font size="2">- p≈Çowe gruntowo-glejowe</font></label></div>
 					
 					<div id="uziarnienie"><label><br><b>Uziarnienie:</b></label></div>
 					
-					<div id="s1"><img src="s1.image" width="40" height="40" align="center"><label><font size="2">- brak uziarnienia</font></label></div>
+					<div id="s1"><img src="images/s1.png" width="40" height="40" align="center"><label><font size="2">- brak uziarnienia</font></label></div>
 					
 					<div id="s2"><label><input type="checkbox" value="s2">
 					<img
-					src="s2.image" width="40" height="40" align="center"><font size="2">- glin piaszczystych i py≥Ûw gliniastych</font></label></div>
+					src="images/s2.png" width="40" height="40" align="center"><font size="2">- glin piaszczystych i py≈Ç√≥w gliniastych</font></label></div>
 					
 					<div id="s3"><label><input type="checkbox" value="s3">
 					<img
-					src="s3.image" width="40" height="40" align="center"><font size="2">- piaskÛw gliniastych i piaskÛw luünych pylastych</font></label></div>
+					src="images/s3.png" width="40" height="40" align="center"><font size="2">- piask√≥w gliniastych i piask√≥w lu≈∏nych pylastych</font></label></div>
 					
-					<div id="cechy"><label><br><b>Cechy szczegÛlne:</b></label></div>
+					<div id="cechy"><label><br><b>Cechy szczeg√≥lne:</b></label></div>
 					
-					<div id="s1"><img src="k.image" width="40" height="40" align="center"><label><font size="2">- wÍglanowe</font></label></div>
+					<div id="s1"><img src="images/k.png" width="40" height="40" align="center"><label><font size="2">- wƒôglanowe</font></label></div>
 					
 					<div id="z"><label><input type="checkbox" value="z" align="middle">
 					<img
-					src="z.image" width="40" height="40" align="center"><font size="2">- warstwa silnie skonsolidowana na g≥. 50-80cm</font></label></div>
+					src="images/z.png" width="40" height="40" align="center"><font size="2">- warstwa silnie skonsolidowana na g≈Ç. 50-80cm</font></label></div>
 					
 					<div id="w"><label><input type="checkbox" value="w" align="middle">
 					<img
-					src="w.image" width="40" height="40" align="center"><font size="2">- wy≥ugowane</font></label></div>
+					src="images/w.png" width="40" height="40" align="center"><font size="2">- wy≈Çugowane</font></label></div>
 					
 					<div id="Dz3k1"><label><input type="checkbox" value="Dz3k1">
 					<img
-					src="Dz3k1.image" width="40" height="40" align="center"><font size="2">- wÍglanowe z poziomem ochric</font></label></div>
+					src="images/Dz3k1.png" width="40" height="40" align="center"><font size="2">- wƒôglanowe z poziomem ochric</font></label></div>
 					
 					<div id="inne"><label><br><b>Inne:</b></label></div>
 					
 					<div id="wykopy"><label><input type="checkbox" value="wykopy">
 					<img
-					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
-					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:wykopy" align="center"><font size="2">- odkrywki glebowe</font></label></div>
+					src="images/wykopy.png" align="center"><font size="2">- odkrywki glebowe</font></label></div>
 			</div>
 		</div>
 		<script src="script.js"></script>
 	</body>
+
 </html>
