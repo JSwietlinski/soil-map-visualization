@@ -18,7 +18,7 @@ var orto = L.tileLayer.wms(orto_url, {
 	maxZoom: 18
 });
 
-var D = L.tileLayer.wms(ms_url, {
+/*var D = L.tileLayer.wms(ms_url, {
 	layers: 'inz:D',
 	format: 'image/png',
 	zIndex: 1,
@@ -91,7 +91,7 @@ var wykopy = L.tileLayer.wms(ms_url, {
 	format: 'image/png',
 	zIndex: 4,
 	transparent: true, //przeźroczystość
-});
+});*/
 	
 //dodanie kontrolki pozycji myszki
 var pozycja = L.control.coordinates({position:"bottomright"}).addTo(map);
@@ -147,6 +147,7 @@ $("#map_view").click(function() {
 		osm.bringToBack();
 	}
 });		
+
 
 
 
