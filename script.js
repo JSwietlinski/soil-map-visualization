@@ -1,18 +1,15 @@
 //definicja obiektu mapy z współrzędnymi dla wybranego obszaru
 var map = L.map('map').setView([52.1768, 15.9399], 14);		
 
-//dodanie zmiennej adresu geoservera
-var ms_url = "http://localhost:8080/geoserver/wms?";
-
-//dodanie zmiennej adresu geoportalu
-var orto_url = "http://mapy.geoportal.gov.pl/wss/service/img/guest/ORTO/MapServer/WMSServer";
-
 //dodanie warstwy osm
-var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png',
 {	
 	maxZoom: 18,
 	attribution: "Źródło danych: OpenStreetMap"
 }).addTo(map);
+
+//dodanie zmiennej adresu geoportalu
+var orto_url = "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution";
 
 var orto = L.tileLayer.wms(orto_url, {
 	layers: 'Raster',
@@ -109,7 +106,7 @@ L.Control.geocoder({
   position: 'topleft'
 }).addTo(map);
 
-//####FUNKCJA GEOLOKALIZACJI ###############
+//FUNKCJA GEOLOKALIZACJI
 var geolokalizacja = L.control.locate({
 	position: 'topleft',  // set the location of the control
 	setView: false, // automatically sets the map view to the user's location, enabled if `follow` is true
@@ -150,5 +147,6 @@ $("#map_view").click(function() {
 		osm.bringToBack();
 	}
 });		
+
 
 
