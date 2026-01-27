@@ -1,0 +1,74 @@
+			#map{
+				position: absolute;
+				display: block;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#panel{
+				position: absolute;
+				right: 7px;
+				top: 10px;
+			}
+			
+			#menu{
+				background-color: white;
+				padding: 10px;
+				width: 350px;
+				border: solid 1px #c3c3c3;
+				text-align: center;
+				cursor: pointer;
+			} 
+			
+			#menu_res{
+				background-color: white;
+				padding: 10px;
+				width: 350px;
+				border: solid 1px #c3c3c3;
+				display: none;
+				overflow: auto;
+			}
+			
+			#s1 {
+				position: relative;
+				margin-left: 25px;
+			}
+			
+			#map_view {
+				position: absolute;
+				left: 10px;
+				top: 200px;
+				background: url('map.png');
+				background-size: contain;
+				width: 36px;
+				height: 36px;
+				cursor: pointer;
+			}
+			
+			#sat_view {
+				position: absolute;
+				left: 10px;
+				top: 245px;
+				background: url('sat.png');
+				background-size: contain;
+				width: 36px;
+				height: 36px;
+				cursor: pointer;
+			}
+			
+			#map_view, #sat_view {
+				box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+			}
+			
+			.leaflet-control-locate a, .leaflet-control-locate.active a {
+				background-size: 125px auto;
+				background-position: -2px -1px;
+			}
+			
+			.leaflet-bar a, .leaflet-bar a:hover {
+				width: 36px;
+				height: 36px;
+				line-height: 36px;
+			}

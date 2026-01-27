@@ -1,110 +1,33 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
 		<title> Mapa glebowa Chobienice </title>
 		
 		<!--ustawienie responsywnosci-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<!--Linki do bibliotek Leaflet-->
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+		<link rel="stylesheet" href="https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+		<script src="https://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		
 		<!--Linki do bibliotek jQuey -->
 		<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		
 		<!--do sekcji head dodaÊ bibliotekÍ dla odczytu pozycji myszki-->
-		<link rel='stylesheet prefetch' href='http://mrmufflon.github.io/Leaflet.Coordinates/dist/Leaflet.Coordinates-0.1.3.css'>
-		<script src='http://mrmufflon.github.io/Leaflet.Coordinates/dist/Leaflet.Coordinates-0.1.3.min.js'></script>
+		<link rel='stylesheet prefetch' href='https://mrmufflon.github.io/Leaflet.Coordinates/dist/Leaflet.Coordinates-0.1.3.css'>
+		<script src='https://mrmufflon.github.io/Leaflet.Coordinates/dist/Leaflet.Coordinates-0.1.3.min.js'></script>
 		
-		<!--biblioteka szukajki-->
-		<link rel='stylesheet prefetch' href='http://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.css'>
-		<script src="http://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.js"></script>
+		<!--biblioteka wyszukiwarki-->
+		<link rel='stylesheet prefetch' href='https://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.css'>
+		<script src="https://k4r573n.github.io/leaflet-control-osm-geocoder/Control.OSMGeocoder.js"></script>
 		
 		<!--biblioteka geolokalizacji-->
 		<link rel='stylesheet prefetch' href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.css'>
 		<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.24.0/L.Control.Locate.js"></script>
 		
-		
-		<!--miejsce na w≥asne definicje stylÛw-->
-		<style>
-			#map{
-				position: absolute;
-				display: block;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-			}
-			
-			#panel{
-				position: absolute;
-				right: 7px;
-				top: 10px;
-			}
-			
-			#menu{
-				background-color: white;
-				padding: 10px;
-				width: 350px;
-				border: solid 1px #c3c3c3;
-				text-align: center;
-				cursor: pointer;
-			} 
-			
-			#menu_res{
-				background-color: white;
-				padding: 10px;
-				width: 350px;
-				border: solid 1px #c3c3c3;
-				display: none;
-				overflow: auto;
-			}
-			
-			#s1 {
-				position: relative;
-				margin-left: 25px;
-			}
-			
-			#map_view {
-				position: absolute;
-				left: 10px;
-				top: 200px;
-				background: url('map.png');
-				background-size: contain;
-				width: 36px;
-				height: 36px;
-				cursor: pointer;
-			}
-			
-			#sat_view {
-				position: absolute;
-				left: 10px;
-				top: 245px;
-				background: url('sat.png');
-				background-size: contain;
-				width: 36px;
-				height: 36px;
-				cursor: pointer;
-			}
-			
-			#map_view, #sat_view {
-				box-shadow: 0 1px 5px rgba(0,0,0,0.65);
-			}
-			
-			.leaflet-control-locate a, .leaflet-control-locate.active a {
-				background-size: 125px auto;
-				background-position: -2px -1px;
-			}
-			
-			.leaflet-bar a, .leaflet-bar a:hover {
-				width: 36px;
-				height: 36px;
-				line-height: 36px;
-			}
-			
-		</style>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<!--warstwa mapy-->
@@ -123,22 +46,22 @@
 					
 					<div id="D"><label><input type="checkbox" value="D">
 					<img
-					src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
+					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
 					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:D" align="center"><font size="2">- czarne ziemie typowe</font></label></div>
 					
 					<div id="Dz"><label><input type="checkbox" value="Dz">
 					<img
-					src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
+					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
 					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:Dz" align="center"><font size="2">- czarne ziemie z poziomem cambic</font></label></div>
 					
 					<div id="G1k"><label><input type="checkbox" value="G1k">
 					<img
-					src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
+					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
 					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:G1k" align="center"><font size="2">- gruntowo-glejowe</font></label></div>
 					
 					<div id="Pg1"><label><input type="checkbox" value="Pg1">
 					<img
-					src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
+					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
 					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:Pg1" align="center"><font size="2">- p≥owe gruntowo-glejowe</font></label></div>
 					
 					<div id="uziarnienie"><label><br><b>Uziarnienie:</b></label></div>
@@ -173,162 +96,10 @@
 					
 					<div id="wykopy"><label><input type="checkbox" value="wykopy">
 					<img
-					src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
+					src="https://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.1.0&FORM
 					AT=image/png&WIDTH=40&HEIGHT=40&LAYER=inz:wykopy" align="center"><font size="2">- odkrywki glebowe</font></label></div>
-
 			</div>
 		</div>
-		
-		<script>
-		//definicja obiektu mapy z wspÛ≥rzÍdnymi dla wybranego obszaru
-		var map = L.map('map').setView([52.1768, 15.9399], 14);
-		
-			//dodanie zmiennej adresu geoservera
-			var ms_url = "http://localhost:8080/geoserver/wms?";
-			
-			//dodanie zmiennej adresu geoportalu
-			var orto_url = "http://mapy.geoportal.gov.pl/wss/service/img/guest/ORTO/MapServer/WMSServer";
-			
-			//dodanie warstwy osm
-			var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-			{	
-				maxZoom: 18,
-				attribution: "èrÛd≥o danych: OpenStreetMap"
-			}).addTo(map);
-			
-			var orto = L.tileLayer.wms(orto_url, {
-				layers: 'Raster',
-				format: 'image/png',
-				attribution: "èrÛd≥o danych: Geoportal",
-				maxZoom: 18
-			});
-			
-			var D = L.tileLayer.wms(ms_url, {
-				layers: 'inz:D',
-				format: 'image/png',
-				zIndex: 1,
-				transparent: true, //przeüroczystoúÊ
-				opacity: 0.6
-			});
-			
-			var Dz = L.tileLayer.wms(ms_url, {
-				layers: 'inz:Dz',
-				format: 'image/png',
-				zIndex: 1,
-				transparent: true, //przeüroczystoúÊ
-				opacity: 0.6
-			});
-			
-			var s2 = L.tileLayer.wms(ms_url, {
-				layers: 'inz:s2',
-				format: 'image/png',
-				zIndex: 3,
-				transparent: true, //przeüroczystoúÊ
-				//opacity: 1
-			});
-			
-			var s3 = L.tileLayer.wms(ms_url, {
-				layers: 'inz:s3',
-				format: 'image/png',
-				zIndex: 3,
-				transparent: true, //przeüroczystoúÊ
-			});
-			
-			var z = L.tileLayer.wms(ms_url, {
-				layers: 'inz:z',
-				format: 'image/png',
-				zIndex: 2,
-				transparent: true, //przeüroczystoúÊ
-			});
-			
-			var w = L.tileLayer.wms(ms_url, {
-				layers: 'inz:w',
-				format: 'image/png',
-				zIndex: 2,
-				transparent: true, //przeüroczystoúÊ
-			});
-			
-			var Dz3k1 = L.tileLayer.wms(ms_url, {
-				layers: 'inz:Dz3k1',
-				format: 'image/png',
-				zIndex: 2,
-				transparent: true, //przeüroczystoúÊ
-			});
-			
-			var G1k = L.tileLayer.wms(ms_url, {
-				layers: 'inz:G1k',
-				format: 'image/png',
-				zIndex: 2,
-				transparent: true, //przeüroczystoúÊ
-				opacity: 0.6
-			});
-			
-			var Pg1 = L.tileLayer.wms(ms_url, {
-				layers: 'inz:Pg1',
-				format: 'image/png',
-				zIndex: 2,
-				transparent: true, //przeüroczystoúÊ
-				opacity: 0.6
-			});
-			
-			var wykopy = L.tileLayer.wms(ms_url, {
-				layers: 'inz:wykopy',
-				format: 'image/png',
-				zIndex: 4,
-				transparent: true, //przeüroczystoúÊ
-			});
-				
-			//dodanie kontrolki pozycji myszki
-			var pozycja = L.control.coordinates({position:"bottomright"}).addTo(map);
-			
-			//dodanie kontrolki skali mapy
-			var skala = L.control.scale({imperial: false}).addTo(map);
-			
-			//dodanie wyszukiwarki miejscowosci
-			var osmGeocoder = new L.Control.OSMGeocoder({text: 'Szukaj', position:"topleft"}).addTo(map);
-			
-			//####FUNKCJA GEOLOKALIZACJI ###############
-			var geolokalizacja = L.control.locate({
-				position: 'topleft',  // set the location of the control
-				setView: false, // automatically sets the map view to the user's location, enabled if `follow` is true
-				keepCurrentZoomLevel: true, // keep the current map zoom level when displaying the user's location. (if `false`, use maxZoom)
-				locateOptions: {
-					showPopup: true, // display a popup when the user click on the inner marker
-				}  // define location options e.g enableHighAccuracy: true or maxZoom: 10
-			}).addTo(map); // WSTAWIENIE FUNKCJI GEOLOKALIZACJI Z IKONY
-			
-			$(document).ready(function(){
-				$("#menu").click(function(){
-					$("#menu_res").slideToggle("slow");
-				});
-			});
-			
-			$( "#menu_res" ).click(function( event ) {
-				layerClicked = window[event.target.value];
-				if (map.hasLayer(layerClicked)) {
-					map.removeLayer(layerClicked);
-				}
-				else {
-					map.addLayer(layerClicked);
-				};
-			});
-			
-			$("#sat_view").click(function() {
-				if (map.hasLayer(osm)) {
-					map.removeLayer(osm);
-					map.addLayer(orto);
-					orto.bringToBack();
-				}
-			});
-			
-			$("#map_view").click(function() {
-				if (map.hasLayer(orto)) {
-					map.removeLayer(orto);
-					map.addLayer(osm);
-					osm.bringToBack();
-				}
-			});
-		
-		</script>
+		<script src="script.js"></script>
 	</body>
 </html>
