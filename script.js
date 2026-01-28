@@ -6,15 +6,13 @@ var map = L.map('map', {
 }).setView([52.1768, 15.9399], 14);		
 
 //dodanie warstwy osm
-var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-{	
+var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png',{	
 	maxZoom: 18,
 	attribution: "Źródło danych: OpenStreetMap"
 }).addTo(map);
 
 //dodanie zmiennej adresu geoportalu
 var orto_url = "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution";
-
 var orto = L.tileLayer.wms(orto_url, {
 	layers: 'Raster',
 	format: 'image/png',
@@ -26,9 +24,11 @@ var orto = L.tileLayer.wms(orto_url, {
 	maxZoom: 18
 });
 
-// Ładowanie plików GeoJSON dla wykopów
+// Ładowanie plików GeoJSON dla wykopów(punkty)
+var wykopyLayer = L.layerGroup(); 
+
 $.getJSON("data/wykopy.geojson", function(data) {
-    L.geoJson(data, {
+    var geojson = L.geoJson(data, {
         pointToLayer: function (feature, latlng) {
             var wykopIcon = L.icon({
                 iconUrl: 'images/wykopy.png',
@@ -37,8 +37,39 @@ $.getJSON("data/wykopy.geojson", function(data) {
             });
             return L.marker(latlng, {icon: wykopIcon});
         }
-    }).addTo(map);
+    });
+    // Dodajemy dane do grupy, ale NIE do mapy
+    wykopyLayer.addLayer(geojson); 
 });
+
+// Ładowanie plików GeoJSON dla gleb (poligony)
+var glebyLayers = {};
+
+function loadgleby(code, color) {
+    glebyLayers[code] = L.layerGroup();
+    $.getJSON("data/" + code + ".geojson", function(data) {
+        var geojson = L.geoJson(data, {
+            style: {
+                color: "#333",
+                weight: 1,
+                fillColor: color,
+                fillOpacity: 0.6
+            }
+        });
+        glebyLayers[code].addLayer(geojson);
+    });
+}
+
+// WYWOŁANIE ŁADOWANIA DLA WSZYSTKICH WARSTW
+loadgleby("D", "#8d643a");
+loadgleby("Dz", "#b99061");
+loadgleby("G1k", "#9da1a4");
+loadgleby("Pg1", "#444df4");
+loadgleby("s2", "#b99061"); 
+loadgleby("s3", "#e3c191");
+loadgleby("z", "#7d7d7d");
+loadgleby("w", "#ffffff");
+loadgleby("Dz3k1", "#b99061");
 
 
 /*var D = L.tileLayer.wms(ms_url, {
@@ -139,13 +170,24 @@ var geolokalizacja = L.control.locate({
 	}  // define location options e.g enableHighAccuracy: true or maxZoom: 10
 }).addTo(map); // WSTAWIENIE FUNKCJI GEOLOKALIZACJI Z IKONY
 
+// obsługa menu i checkboxów
 $(document).ready(function(){
 	$("#menu").click(function(){
 		$("#menu_res").slideToggle("slow");
 	});
 });
 
-$( "#menu_res" ).click(function( event ) {
+$( "#menu_res input" ).click(function( event ) {
+    var val = $(this).val(); 
+    
+    if (val === "wykopy") {
+        toggleLayer(wykopyLayer);
+    } else if (glebyLayers[val]) {
+        toggleLayer(glebyLayers[val]);
+    }
+});
+
+/*$( "#menu_res" ).click(function( event ) {
 	layerClicked = window[event.target.value];
 	if (map.hasLayer(layerClicked)) {
 		map.removeLayer(layerClicked);
@@ -153,7 +195,7 @@ $( "#menu_res" ).click(function( event ) {
 	else {
 		map.addLayer(layerClicked);
 	};
-});
+*/
 
 $("#sat_view").click(function() {
 	if (map.hasLayer(osm)) {
@@ -171,6 +213,18 @@ $("#map_view").click(function() {
 	}
 });		
 
+function toggleLayer(layer) {
+    if (map.hasLayer(layer)) {
+        map.removeLayer(layer);
+    } else {
+        map.addLayer(layer);
+        if (layer === wykopyLayer) {
+            wykopyLayer.getLayers().forEach(function(l) {
+                if (l.bringToFront) l.bringToFront();
+            });
+        }
+    }
+}
 
 
 
