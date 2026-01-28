@@ -1,5 +1,9 @@
 //definicja obiektu mapy z współrzędnymi dla wybranego obszaru
-var map = L.map('map').setView([52.1768, 15.9399], 14);		
+var map = L.map('map', {
+	zoomAnimation: true,
+    fadeAnimation: true,
+    markerZoomAnimation: true
+}).setView([52.1768, 15.9399], 14);		
 
 //dodanie warstwy osm
 var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -15,6 +19,10 @@ var orto = L.tileLayer.wms(orto_url, {
 	layers: 'Raster',
 	format: 'image/png',
 	attribution: "Źródło danych: Geoportal",
+	transparent: true,
+    version: '1.1.1', 
+    updateWhenIdle: true,
+    updateWhenZooming: false,
 	maxZoom: 18
 });
 
