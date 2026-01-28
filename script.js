@@ -26,6 +26,21 @@ var orto = L.tileLayer.wms(orto_url, {
 	maxZoom: 18
 });
 
+// Ładowanie plików GeoJSON dla wykopów
+$.getJSON("data/wykopy.geojson", function(data) {
+    L.geoJson(data, {
+        pointToLayer: function (feature, latlng) {
+            var wykopIcon = L.icon({
+                iconUrl: 'images/wykopy.png',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32]
+            });
+            return L.marker(latlng, {icon: wykopIcon});
+        }
+    }).addTo(map);
+});
+
+
 /*var D = L.tileLayer.wms(ms_url, {
 	layers: 'inz:D',
 	format: 'image/png',
